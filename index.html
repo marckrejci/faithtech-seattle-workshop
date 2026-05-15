@@ -977,22 +977,33 @@
           <div style={{ display:"grid", gridTemplateColumns:"1.4fr 1fr 1fr", gap:"min(3vw,32px)", alignItems:"start" }}>
 
             {/* Col 1: Consolidated learnings */}
-            <div style={{ padding:"1.1rem 1.3rem", background:"rgba(255,255,255,0.07)", borderRadius:12, border:"1px solid rgba(255,255,255,0.1)" }}>
-              <h3 style={{ fontSize:"clamp(0.72rem,0.9vw,0.82rem)", color:FT_YELLOW, fontWeight:700, marginBottom:"0.75rem", letterSpacing:"0.1em" }}>WHAT YOU PRACTICED TODAY</h3>
-              <ul style={{ listStyle:"none", padding:0, margin:0, fontSize:"clamp(0.82rem,1vw,0.95rem)", color:"rgba(255,255,255,0.8)" }}>
-                {[
-                  "Discover: listen before you build. Real human context beats assumptions every time.",
-                  "Discern: bring it to God before each loop. Ask what culture, impact, and abuse this product could create.",
-                  "Develop: low fidelity first. The journey map is your team's shared language.",
-                  "Demonstrate: show your work and stay teachable. Feedback is a gift.",
-                  "We are image-bearing co-creators. How we build is how we love.",
-                ].map((q,i)=>(
-                  <li key={i} style={{ marginBottom:"0.6em", display:"flex", alignItems:"flex-start", gap:8 }}>
-                    <span style={{ width:5, height:5, background:FT_YELLOW, marginTop:"0.55em", borderRadius:999, display:"inline-block", flexShrink:0 }} />
-                    <span>{q}</span>
-                  </li>
-                ))}
-              </ul>
+            <div style={{ display:"flex", flexDirection:"column", gap:"0.75rem" }}>
+              <div style={{ padding:"1.1rem 1.3rem", background:"rgba(255,255,255,0.07)", borderRadius:12, border:"1px solid rgba(255,255,255,0.1)" }}>
+                <h3 style={{ fontSize:"clamp(0.72rem,0.9vw,0.82rem)", color:FT_YELLOW, fontWeight:700, marginBottom:"0.75rem", letterSpacing:"0.1em" }}>WHAT YOU PRACTICED TODAY</h3>
+                <ul style={{ listStyle:"none", padding:0, margin:0, fontSize:"clamp(0.82rem,1vw,0.95rem)", color:"rgba(255,255,255,0.8)" }}>
+                  {[
+                    "Discover: listen before you build. Real human context beats assumptions every time.",
+                    "Discern: bring it to God before each loop. Ask what culture, impact, and abuse this product could create.",
+                    "Develop: low fidelity first. The journey map is your team's shared language.",
+                    "Demonstrate: show your work and stay teachable. Feedback is a gift.",
+                    "We are image-bearing co-creators. How we build is how we love.",
+                  ].map((q,i)=>(
+                    <li key={i} style={{ marginBottom:"0.6em", display:"flex", alignItems:"flex-start", gap:8 }}>
+                      <span style={{ width:5, height:5, background:FT_YELLOW, marginTop:"0.55em", borderRadius:999, display:"inline-block", flexShrink:0 }} />
+                      <span>{q}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div style={{ padding:"0.65rem 0.9rem", background:"rgba(255,255,255,0.04)", borderRadius:8, border:"1px solid rgba(255,255,255,0.07)" }}>
+                <div style={{ fontSize:"0.75rem", color:"rgba(255,255,255,0.4)", lineHeight:1.45 }}>
+                  Marc Krejci &middot; Co-Create Lead, FaithTech Seattle<br />
+                  <span style={{ fontSize:"0.7rem" }}>marc@pathfinderfoundry.com</span>
+                </div>
+              </div>
+              <div style={{ fontSize:"0.75rem", color:"rgba(255,255,255,0.4)", lineHeight:1.45, padding:"0 0.9rem" }}>
+                Ambient music: HoliznaCC0 (CC0) &middot; freemusicarchive.org
+              </div>
             </div>
 
             {/* Col 2: QR codes */}
@@ -1025,19 +1036,6 @@
                 <div style={{ fontSize:"0.68rem", fontWeight:700, letterSpacing:"0.1em", color:FT_YELLOW, marginBottom:"0.4rem" }}>COMING THIS FALL</div>
                 <div style={{ fontSize:"clamp(0.95rem,1.2vw,1.1rem)", fontWeight:700, color:WHITE, lineHeight:1.2, marginBottom:"0.3rem" }}>FaithTech Create</div>
                 <div style={{ fontSize:"0.82rem", color:"rgba(255,255,255,0.55)", lineHeight:1.4 }}>Put today&apos;s skills to work over a series of gatherings. Stay connected via Slack and the email list to hear when it launches.</div>
-              </div>
-              <div style={{ padding:"0.65rem 0.9rem", background:"rgba(255,255,255,0.04)", borderRadius:8, border:"1px solid rgba(255,255,255,0.07)" }}>
-                <div style={{ fontSize:"0.75rem", color:"rgba(255,255,255,0.4)", lineHeight:1.45 }}>
-                  Marc Krejci &middot; Co-Create Lead, FaithTech Seattle<br />
-                  <span style={{ fontSize:"0.7rem" }}>marc@pathfinderfoundry.com</span>
-                </div>
-              </div>
-              <div style={{ padding:"0.55rem 0.9rem", background:"rgba(255,255,255,0.03)", borderRadius:8, border:"1px solid rgba(255,255,255,0.06)" }}>
-                <div style={{ fontSize:"0.65rem", color:"rgba(255,255,255,0.25)", lineHeight:1.5 }}>
-                  <strong style={{ color:"rgba(255,255,255,0.35)", letterSpacing:"0.06em" }}>AMBIENT MUSIC</strong><br />
-                  Tracks by HoliznaCC0 &middot; Released under CC0 (Public Domain)<br />
-                  via Free Music Archive &middot; freemusicarchive.org
-                </div>
               </div>
             </div>
 
