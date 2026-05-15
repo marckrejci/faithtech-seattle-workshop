@@ -4,7 +4,25 @@
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAALVBMVEVHcEz/swD/swD/swD/swD/swAWFgz/uQAAAAytewYKEAxSPgnspgDFjAQ1KwoO+nSdAAAABXRSTlMA0V2avQaZyA8AAAHFSURBVHic7dvrjoMgEAVg71wE3v9xq9tGBthYBGWS5pyf28b5Fo0DVrruL8M49XPD9NM4dD5Dy9o+B2HiqT/PE3P9j4Bp/N/ZzwJn/XlmHoB9CEZewMh5Ce6Zuqb3nzQ98zW4XYUAAAAAALUHsEFMc4CTYWxbgFByCaJXAQAAAAAAAC9gcc8DBImN62up6BeeAJig/y1xNP1UZ/TGqwCxpkUX/c4/f/8+BtcBSR3pPpHpRy0A2hynPPmsBUAqX8TEpwcAAAD4SYBjAJz2vwYAs/q4pBU9DxBbkzkSl99q0Jb7DCDtv7Tnr/SrKlorq69HLwJoa3yi/9HQzBlTogKAtFfnfXcDrj8GAQAAAH4NoE5Wf7RzZt2vSm7FclU+4XBYRZNzyyxqRkE3IoJt4Rgk52lBBiA4amohHe+h+YCg47oky78Wc0J6WTFMyUIL+6wYAAAAAACAM4DQZB27RWY8O78VEKzk92RM3u4FiDitAQUBAAAAAAAAAAAAAAAAAAC4AVBV/zrARr9Nurr619+kEiZ8lbmyfsm7ZLUlawE3BwAAAOAHsG92Y9/ux77hkX3LJ/umV/5tv+wbn/m3fvNvfmfd/v8CynVTymzbo9UAAAAASUVORK5CYII=">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Build With Intention — FaithTech Seattle</title>
+  <title>Build With Intention · FaithTech Seattle</title>
+  <meta name="description" content="Rapid Prototyping for Purpose-Driven Creators. A FaithTech Seattle workshop led by Marc Krejci.">
+  <meta name="author" content="Marc Krejci">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FaithTech Seattle">
+  <meta property="og:title" content="Build With Intention">
+  <meta property="og:description" content="Rapid Prototyping for Purpose-Driven Creators. A FaithTech Seattle workshop led by Marc Krejci.">
+  <meta property="og:url" content="https://marckrejci.github.io/faithtech-seattle-workshop/">
+  <meta property="og:image" content="https://marckrejci.github.io/faithtech-seattle-workshop/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Build With Intention. Rapid Prototyping for Purpose-Driven Creators. A FaithTech Seattle workshop led by Marc Krejci.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Build With Intention">
+  <meta name="twitter:description" content="Rapid Prototyping for Purpose-Driven Creators. A FaithTech Seattle workshop led by Marc Krejci.">
+  <meta name="twitter:image" content="https://marckrejci.github.io/faithtech-seattle-workshop/og-image.png">
+  <meta name="twitter:image:alt" content="Build With Intention. Rapid Prototyping for Purpose-Driven Creators. A FaithTech Seattle workshop led by Marc Krejci.">
+  <meta name="theme-color" content="#FFF737">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
@@ -396,6 +414,44 @@
     );
   }
 
+  function RulesCombinedSlide({ title, doSubtitle, doItems, dontSubtitle, dontItems, footer }) {
+    const Panel = ({ kind, subtitle, items }) => {
+      const isDo = kind==="do";
+      const ac = isDo?GREEN_OK:RED, dim = isDo?GREEN_DIM:RED_DIM;
+      return (
+        <div style={{ display:"flex", flexDirection:"column", gap:"0.8rem" }}>
+          <div style={{ display:"inline-flex", alignSelf:"flex-start", alignItems:"center", gap:8, padding:"0.35rem 0.95rem", borderRadius:999, background:dim, color:ac, fontWeight:700, fontSize:"0.85rem", letterSpacing:"0.1em" }}>
+            {isDo ? "Done right" : "Avoid"}
+          </div>
+          <h3 style={{ fontSize:"clamp(1rem,1.35vw,1.25rem)", fontWeight:500, color:ac, margin:0, lineHeight:1.3 }}>{subtitle}</h3>
+          <ul style={{ listStyle:"none", padding:0, margin:0, display:"flex", flexDirection:"column", gap:"0.5rem" }}>
+            {items.map((it,i)=>(
+              <li key={i} style={{ display:"flex", alignItems:"center", gap:12, padding:"0.6rem 0.9rem", background:dim, border:"1px solid "+ac+"55", borderRadius:10 }}>
+                <span style={{ fontSize:"clamp(1.2rem,1.7vw,1.55rem)", lineHeight:1, flexShrink:0 }}>{it.icon}</span>
+                <div style={{ flex:1 }}>
+                  <div style={{ fontSize:"clamp(0.98rem,1.25vw,1.15rem)", fontWeight:700, color:TEXT }}>{it.label}</div>
+                  {it.note && <div style={{ fontSize:"clamp(0.8rem,0.98vw,0.95rem)", color:TEXT, opacity:0.7, marginTop:2 }}>{it.note}</div>}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    };
+    return (
+      <SlideShell dense>
+        <div style={{ width:"100%", maxWidth:1280 }}>
+          <h1 style={{ fontSize:"clamp(2.2rem,4vw,3.6rem)", fontWeight:700, color:TEXT, letterSpacing:"-0.025em", lineHeight:1.04, margin:"0 0 1.1rem" }}>{title}</h1>
+          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"min(4vw,40px)", alignItems:"flex-start" }}>
+            <Panel kind="do" subtitle={doSubtitle} items={doItems} />
+            <Panel kind="dont" subtitle={dontSubtitle} items={dontItems} />
+          </div>
+          {footer && <p style={{ fontSize:"clamp(0.95rem,1.25vw,1.15rem)", fontWeight:600, color:TEXT, marginTop:"1rem", marginBottom:0, textAlign:"center" }}>{footer}</p>}
+        </div>
+      </SlideShell>
+    );
+  }
+
   // Welcome music (title slide)
   function WelcomeMusicToggle({ audio }) {
     const [playing, setPlaying] = useState(false);
@@ -720,7 +776,7 @@
       <SlideShell dense>
         <div style={{ width:"100%", maxWidth:1280 }}>
           <h1 style={{ fontSize:"clamp(3rem,6vw,5.5rem)", lineHeight:1.02, letterSpacing:"-0.03em", color:TEXT, marginBottom:"0.6rem", fontWeight:700 }}>Three Roles</h1>
-          <p style={{ color:TEXT_MUTED, fontSize:"clamp(1.05rem,1.5vw,1.35rem)", marginBottom:"1.6rem" }}>Groups of 3+. <strong style={{ color:TEXT }}>Everyone rotates through each role.</strong></p>
+          <p style={{ color:TEXT_MUTED, fontSize:"clamp(1.05rem,1.5vw,1.35rem)", marginBottom:"1.6rem" }}>Groups of 3. <strong style={{ color:TEXT }}>Everyone rotates through each role.</strong></p>
           <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:"min(3vw,36px)", alignItems:"stretch" }}>
             {roles.map((r,i)=>(
               <div key={i} style={{ background:"rgba(22,22,12,0.04)", border:"1px solid rgba(22,22,12,0.1)", borderTop:"3px solid "+FT_BLACK, borderRadius:14, padding:"1.6rem 1.4rem 1.8rem", display:"flex", flexDirection:"column", gap:"0.9rem" }}>
@@ -748,7 +804,10 @@
           <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"min(4vw,48px)", alignItems:"stretch" }}>
             <div style={{ padding:"1.4rem 1.5rem", background:"rgba(22,22,12,0.04)", border:"1px solid rgba(22,22,12,0.1)", borderRadius:14, display:"flex", flexDirection:"column", gap:"0.9rem" }}>
               <div style={{ fontSize:"0.72rem", letterSpacing:"0.12em", color:TEXT_MUTED, fontWeight:700 }}>1. SET THE SCENE</div>
-              <h3 style={{ fontSize:"clamp(1.2rem,1.8vw,1.55rem)", fontWeight:700, color:TEXT, margin:0, lineHeight:1.2 }}>Greet them and frame the moment.</h3>
+              <h3 style={{ fontSize:"clamp(1.2rem,1.8vw,1.55rem)", fontWeight:700, color:TEXT, margin:0, lineHeight:1.2 }}>Greet them and frame the moment, with words only.</h3>
+              <div style={{ padding:"0.65rem 0.9rem", background:"rgba(22,22,12,0.14)", borderLeft:"3px solid "+FT_BLACK, borderRadius:"0 6px 6px 0", fontSize:"clamp(0.85rem,1vw,0.95rem)", color:TEXT, lineHeight:1.4 }}>
+                <strong>Verbal only.</strong> Keep your sketches and screens hidden. If you point at them now, you bias what they see.
+              </div>
               <p style={{ fontSize:"clamp(0.92rem,1.1vw,1.05rem)", color:TEXT, margin:0, lineHeight:1.45, opacity:0.85 }}>Tell them in one or two sentences:</p>
               <ul style={{ listStyle:"none", padding:0, margin:0, fontSize:"clamp(0.9rem,1.1vw,1.05rem)", color:TEXT }}>
                 <Bullet size="sm"><strong>Who</strong> they are</Bullet>
@@ -759,7 +818,11 @@
             </div>
             <div style={{ padding:"1.4rem 1.5rem", background:ACCENT_DIM, border:"1px solid rgba(255,247,55,0.5)", borderRadius:14, display:"flex", flexDirection:"column", gap:"0.9rem" }}>
               <div style={{ fontSize:"0.72rem", letterSpacing:"0.12em", color:TEXT_MUTED, fontWeight:700 }}>2. GET OUT OF THE WAY</div>
-              <h3 style={{ fontSize:"clamp(1.2rem,1.8vw,1.55rem)", fontWeight:700, color:TEXT, margin:0, lineHeight:1.2 }}>Three lines to keep ready.</h3>
+              <h3 style={{ fontSize:"clamp(1.2rem,1.8vw,1.55rem)", fontWeight:700, color:TEXT, margin:0, lineHeight:1.2 }}>Now unveil the artifacts. Then go quiet.</h3>
+              <div style={{ padding:"0.65rem 0.9rem", background:"rgba(22,22,12,0.16)", borderLeft:"3px solid "+FT_BLACK, borderRadius:"0 6px 6px 0", fontSize:"clamp(0.85rem,1vw,0.95rem)", color:TEXT, lineHeight:1.4 }}>
+                Hand the sketches over and watch how they react. <strong>Don&apos;t explain. Don&apos;t point. Don&apos;t walk them through it.</strong>
+              </div>
+              <p style={{ fontSize:"clamp(0.88rem,1.05vw,1rem)", color:TEXT, margin:0, lineHeight:1.45, opacity:0.85 }}>Three lines to keep ready:</p>
               <ul style={{ listStyle:"none", padding:0, margin:0, fontSize:"clamp(0.9rem,1.1vw,1.05rem)", color:TEXT }}>
                 <Bullet size="sm"><em>&ldquo;Speak out loud everything you see, think, feel, and react to.&rdquo;</em></Bullet>
                 <Bullet size="sm">If stuck: <em>&ldquo;What do you think you should do?&rdquo;</em></Bullet>
@@ -848,12 +911,28 @@
     );
   }
 
-  // 15 / 16: Rules slides
+  // 15: Rules slide (DO + DON'T combined)
   function Slide11() {
-    return <RulesSlide kind="do" title="During Testing" subtitle="Be brutally honest. Verbalize everything. Watch for these signals." items={[{icon:"😲",label:"Emotional reactions",note:"the moments that matter most"},{icon:"😮",label:"Surprise",note:"expectation broke. investigate why"},{icon:"😕",label:"Confusion",note:"the flow doesn’t match their mental model"},{icon:"💬",label:"Comments",note:"running commentary while they navigate"},{icon:"👀",label:"Behavior",note:"what they do, not just what they say"}]} />;
-  }
-  function Slide12() {
-    return <RulesSlide kind="dont" title="During Testing" subtitle="The Guide sets the scene, then gets out of the way." items={[{icon:"🛑",label:"Defend",note:"no pitching, no justifying"},{icon:"➡️",label:"Direct",note:"let them stumble. that’s the data"},{icon:"🎨",label:"Design",note:"this isn’t a critique session"},{icon:"🔬",label:"Research",note:"you’re listening, not interviewing"}]} footer="If they’re stuck, it’s our fault, not theirs." />;
+    return (
+      <RulesCombinedSlide
+        title="During Testing"
+        doSubtitle="Watch closely. Capture every signal."
+        doItems={[
+          {icon:"🧐",label:"Eyebrow metric",note:"the visible “something just landed” face."},
+          {icon:"😮",label:"Surprise",note:"expectation broke. investigate why"},
+          {icon:"😕",label:"Confusion",note:"the flow doesn’t match their mental model"},
+          {icon:"💬",label:"Comments",note:"running commentary while they navigate"},
+        ]}
+        dontSubtitle="The Guide sets the scene, then gets out of the way."
+        dontItems={[
+          {icon:"🛑",label:"Defend",note:"no pitching, no justifying"},
+          {icon:"➡️",label:"Direct",note:"let them stumble. that’s the data"},
+          {icon:"🎨",label:"Design",note:"this isn’t a critique session"},
+          {icon:"🔬",label:"Research",note:"you’re listening, not interviewing"},
+        ]}
+        footer="If they’re stuck, it is the creator's fault, not the user."
+      />
+    );
   }
 
   // 24: Debrief Timer
@@ -926,7 +1005,7 @@
                   onKeyDown={e=>{ if(e.key==="Enter"&&canStart) handleStart(); }}
                   placeholder="Type team name..." style={inp} />
                 <div style={{ display:"flex", alignItems:"center", gap:6 }}>
-                  <span style={{ fontSize:"0.8rem", color:TEXT_MUTED, whiteSpace:"nowrap" }}>Team total:</span>
+                  <span style={{ fontSize:"0.8rem", color:TEXT_MUTED, whiteSpace:"nowrap" }}>Total number of teams:</span>
                   <input value={teamTotal} onChange={e=>setTeamTotal(e.target.value.replace(/\D/g,""))}
                     placeholder="?" style={{ width:48, background:"rgba(22,22,12,0.06)",
                       border:"1px dashed rgba(22,22,12,0.25)", borderRadius:6,
@@ -1055,7 +1134,7 @@
         <Bullet><strong>2 min per person:</strong>
           <ul style={{ listStyle:"none", paddingLeft:24, marginTop:"0.3em" }}>
             <Bullet size="sm">State your name, where you live, what you do</Bullet>
-            <Bullet size="sm">Throw out 1 to 2 potential product ideas</Bullet>
+            <Bullet size="sm">Throw out 1 to 2 potential ideas to workshop</Bullet>
           </ul>
         </Bullet>
         <Bullet><strong>Independently</strong> brainstorm 2 to 4 solution ideas</Bullet>
@@ -1080,17 +1159,76 @@
 
   const slide17Body = (
     <React.Fragment>
-      <div style={{ display:"flex", alignItems:"center", gap:4, marginBottom:14, flexWrap:"nowrap" }}>
-        <StickyNote text="1" rotate={-4} size={66} primary />
-        <span style={{ color:TEXT_MUTED, fontWeight:700, fontSize:16 }}>&rarr;</span>
-        <StickyNote text="2" rotate={5} size={56} /><StickyNote text="3" rotate={-3} size={56} /><StickyNote text="4" rotate={4} size={56} /><StickyNote text="5" rotate={-5} size={56} />
-        <span style={{ color:TEXT_MUTED, fontWeight:700, fontSize:16 }}>&rarr;</span>
-        <StickyNote text="6" rotate={3} size={66} primary />
+      <div style={{
+        display:"grid",
+        gridTemplateColumns:"2fr 1fr 1fr 1fr 1fr 2fr",
+        gridTemplateRows:"auto auto",
+        columnGap:10, rowGap:8,
+        marginBottom:16
+      }}>
+        {/* Box 1 — spans both rows so its full text has room */}
+        <div style={{
+          gridColumn:"1", gridRow:"1 / span 2",
+          padding:"0.95rem 1.05rem",
+          background:"rgba(255,247,55,0.22)",
+          border:"2px solid "+FT_BLACK,
+          borderRadius:12,
+          display:"flex", flexDirection:"column", gap:"0.6rem"
+        }}>
+          <div style={{ width:30, height:30, borderRadius:999, background:FT_BLACK, color:FT_YELLOW, fontWeight:700, fontSize:15, display:"flex", alignItems:"center", justifyContent:"center" }}>1</div>
+          <div style={{ fontSize:"clamp(0.86rem,1vw,1rem)", color:TEXT, lineHeight:1.35, fontWeight:600 }}>
+            How someone first discovers the experience
+          </div>
+        </div>
+
+        {/* Boxes 2–5 — short, just the badge */}
+        {[2,3,4,5].map(n=>(
+          <div key={n} style={{
+            gridRow:"1",
+            padding:"0.55rem",
+            background:"rgba(22,22,12,0.04)",
+            border:"2px dashed rgba(22,22,12,0.28)",
+            borderRadius:12,
+            minHeight:64,
+            display:"flex", alignItems:"center", justifyContent:"center"
+          }}>
+            <div style={{
+              width:28, height:28, borderRadius:999,
+              background:FT_BLACK, color:FT_YELLOW,
+              fontWeight:700, fontSize:14,
+              display:"flex", alignItems:"center", justifyContent:"center",
+              opacity:0.6
+            }}>{n}</div>
+          </div>
+        ))}
+
+        {/* Box 6 — spans both rows */}
+        <div style={{
+          gridColumn:"6", gridRow:"1 / span 2",
+          padding:"0.95rem 1.05rem",
+          background:"rgba(255,247,55,0.22)",
+          border:"2px solid "+FT_BLACK,
+          borderRadius:12,
+          display:"flex", flexDirection:"column", gap:"0.6rem"
+        }}>
+          <div style={{ width:30, height:30, borderRadius:999, background:FT_BLACK, color:FT_YELLOW, fontWeight:700, fontSize:15, display:"flex", alignItems:"center", justifyContent:"center" }}>6</div>
+          <div style={{ fontSize:"clamp(0.86rem,1vw,1rem)", color:TEXT, lineHeight:1.35, fontWeight:600 }}>
+            The core end-result objective (sale, booking, signup, etc.)
+          </div>
+        </div>
+
+        {/* Caption nested between boxes 1 and 6, under boxes 2–5 */}
+        <div style={{
+          gridColumn:"2 / span 4", gridRow:"2",
+          textAlign:"center", alignSelf:"center",
+          fontSize:"clamp(0.82rem,1vw,0.95rem)",
+          color:TEXT_MUTED, fontWeight:600, fontStyle:"italic",
+          padding:"0.3rem 0"
+        }}>
+          &larr; Fill in the 4 middle steps to bridge them &rarr;
+        </div>
       </div>
       <ul style={{ listStyle:"none", padding:0, margin:"0 0 0.6rem" }}>
-        <Bullet size="sm"><strong>First note:</strong> how someone discovers the experience</Bullet>
-        <Bullet size="sm"><strong>Last note:</strong> the core objective (sale, booking, signup, etc.)</Bullet>
-        <Bullet size="sm"><strong>Fill in the 4 middle steps</strong> to bridge them</Bullet>
         <Bullet size="sm">Align as a team. Required before you create anything.</Bullet>
       </ul>
       <div style={{ padding:"0.55rem 0.85rem", background:"rgba(22,22,12,0.12)", borderLeft:"3px solid "+FT_BLACK, borderRadius:"0 6px 6px 0", fontSize:"clamp(0.85rem,1.05vw,1rem)", fontWeight:600, lineHeight:1.35, color:TEXT }}>Aim for the <em>minimally understandable flow</em>.</div>
@@ -1102,16 +1240,18 @@
       <p style={{ fontSize:"clamp(0.92rem,1.1vw,1.05rem)", color:TEXT, margin:"0 0 0.85rem", lineHeight:1.5 }}>
         <strong>You are not making software.</strong> You are making something a real person can hold, look at, and react to.
       </p>
-      <div style={{ display:"flex", flexDirection:"column", gap:"0.5rem", marginBottom:"0.9rem" }}>
+      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"0.7rem", marginBottom:"0.9rem" }}>
         {[
-          { icon:"🗺️", strong:"Use your journey map.", rest:" Pick the most important step from slide 9 and make it tangible. That is your target." },
+          { icon:"🗺️", strong:"Use your journey map.", rest:" Pick the most important step from your flow and make it tangible. That is your target." },
           { icon:"✏️", strong:"Boxes and labels count.", rest:' A rectangle that says "Search results" is a screen. No artistic skill required.' },
           { icon:"🎯", strong:"Messy is the point.", rest:" If it looks too polished you spent time on the wrong thing. Rough sketches invite honest feedback." },
           { icon:"🤝", strong:"Aim for handoff-ready.", rest:" By the end you should be able to set it in front of someone and ask: what would you do here?" },
         ].map((row,i)=>(
-          <div key={i} style={{ display:"flex", alignItems:"flex-start", gap:10, fontSize:"clamp(0.88rem,1.05vw,1rem)", color:TEXT, lineHeight:1.45 }}>
-            <span style={{ flexShrink:0, fontSize:"1.1rem", marginTop:"0.1em" }}>{row.icon}</span>
-            <span><strong>{row.strong}</strong>{row.rest}</span>
+          <div key={i} style={{ padding:"0.85rem 1rem", background:"rgba(22,22,12,0.05)", border:"1px solid rgba(22,22,12,0.12)", borderRadius:12, display:"flex", flexDirection:"column", gap:"0.5rem" }}>
+            <span style={{ fontSize:"1.4rem", lineHeight:1 }}>{row.icon}</span>
+            <div style={{ fontSize:"clamp(0.86rem,1.02vw,0.98rem)", color:TEXT, lineHeight:1.45 }}>
+              <strong>{row.strong}</strong>{row.rest}
+            </div>
           </div>
         ))}
       </div>
@@ -1205,7 +1345,6 @@
     { id: 13, render: ()                    => <Slide13 /> },
     { id: 14, render: ()                    => <Slide14 /> },
     { id: 15, render: ()                    => <Slide11 /> },
-    { id: 16, render: ()                    => <Slide12 /> },
     { id: 17, render: ({ isActive, audio }) => <TimerSlide loopLabel="Loop 1: Test" title="Swap and Experience" duration={420} body={swapBody} footer={testFooter} isActive={isActive} audio={audio} /> },
     { id: 18, render: ({ isActive, audio }) => <DiscernmentPrayerSlide phase="loop2" isActive={isActive} audio={audio} /> },
     { id: 19, render: ({ isActive, audio }) => <TimerSlide loopLabel="Loop 2: Idea + Plan + Create" title="Synthesize Loop 1 learnings and iterate" duration={600} body={slide20Body} isActive={isActive} audio={audio} /> },
@@ -1244,7 +1383,7 @@
           Best viewed on a larger screen
         </h1>
         <p style={{ fontSize:"1rem", lineHeight:1.55, maxWidth:420, opacity:0.75, marginBottom:14 }}>
-          This is an interactive workshop presentation designed for projectors, desktops, and tablets &mdash; not phone screens.
+          This is an interactive workshop presentation designed for projectors, desktops, and tablets; not phones.
         </p>
         <p style={{ fontSize:"0.95rem", lineHeight:1.55, maxWidth:420, opacity:0.65, marginBottom:28 }}>
           Open it on a laptop or tablet to run the workshop, or rotate your tablet to landscape.
