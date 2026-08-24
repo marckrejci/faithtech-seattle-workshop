@@ -2,6 +2,8 @@
 ### Rapid Prototyping for Purpose-Driven Creators
 *A FaithTech Seattle Workshop Presentation*
 
+**[→ View the Live Presentation](https://marckrejci.github.io/faithtech-seattle-workshop/)**
+
 A single-file interactive workshop presentation built in React (Babel standalone). No build step required — open `index.html` in any modern browser.
 
 ---
